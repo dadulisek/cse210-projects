@@ -1,6 +1,6 @@
 # cse210-ww-student-template
 
-David Navratil
+dadulisek
 
 This is the starter code for students in the worldwide content version of CSE 210.
 
