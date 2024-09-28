@@ -1,9 +1,16 @@
 public class PromptGenerator
 {
-    public List<string> _prompts;
+
+    Random random = new Random();
+
+    int randomNum;
+
+    public List<string> _prompts =  new List<string>();
 
     public string GetRandomPrompt()
     {
-        return"";
+        randomNum = random.Next(0, _prompts.Count);
+
+        return _prompts[randomNum];
     }
 }
