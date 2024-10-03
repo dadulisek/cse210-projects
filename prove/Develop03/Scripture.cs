@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 public class Scripture
 {
     private Reference _reference;
@@ -22,16 +23,51 @@ public class Scripture
 
     public void HideRandomWords(int numberToHide)
     {
+        Random rand = new Random();
 
+        for (int i = 0; i < numberToHide; i++)
+        {
+            int randomNum = rand.Next(0, _words.Count);
+
+            while (_words[randomNum].IsHidden())
+            {
+                randomNum = rand.Next(0, _words.Count);
+            }
+
+             _words[randomNum].Hide();
+        }
     }
 
     public string GetDisplayText()
     {
-        return  "";
+        string verse = _reference.GetDisplayText();
+
+        foreach (Word word in _words)
+        {
+            verse = $"{verse} {word.GetDisplayText()}";
+        }
+        return  verse;
     }
 
     public bool IsCompletlyHidden()
     {
-        return false;
+        bool allFalse = true;
+
+        foreach (Word word in _words)
+        {
+            if (!word.IsHidden())
+            {
+                allFalse = false;
+                break;
+            }
+        }
+        if (allFalse)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
