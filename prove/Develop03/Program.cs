@@ -5,14 +5,15 @@ class Program
 {
     static void Main(string[] args)
     {
+        Console.Clear();
+
         Reference r = new Reference("Proverbs", 3, 5, 6);
 
-        Scripture scripture = new Scripture(r, "Trust in the Lord with all thine heart, and lean not unto thien own understanding.");
-
-        Console.WriteLine("Hello Develop03 World!");
+        Scripture scripture = new Scripture(r, "Trust in the Lord with all thine heart; and lean not unto thine own understanding. In all thy ways acknowladge him, and he shall direct thy paths.");
         
         string answer; 
         string text = scripture.GetDisplayText();
+        int randomNum;
 
         Console.WriteLine(text);
         Console.WriteLine();
@@ -21,7 +22,13 @@ class Program
 
         while (answer.ToLower() != "quit" && !scripture.IsCompletlyHidden())
         {
-            scripture.HideRandomWords(3);
+            Console.Clear();
+
+            Random rand = new Random();
+
+            randomNum = rand.Next(2, 4);
+
+            scripture.HideRandomWords(randomNum);
 
             text = scripture.GetDisplayText();
 

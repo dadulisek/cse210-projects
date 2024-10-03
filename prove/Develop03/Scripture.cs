@@ -25,16 +25,43 @@ public class Scripture
     {
         Random rand = new Random();
 
-        for (int i = 0; i < numberToHide; i++)
+        int notHiddenCount = 0;
+
+        foreach (Word word in _words)
         {
-            int randomNum = rand.Next(0, _words.Count);
-
-            while (_words[randomNum].IsHidden())
+            if (!word.IsHidden())
             {
-                randomNum = rand.Next(0, _words.Count);
+                notHiddenCount += 1;
             }
+        }
 
-             _words[randomNum].Hide();
+        if (numberToHide <= notHiddenCount)
+        {
+            for (int i = 0; i < numberToHide; i++)
+            {
+                int randomNum = rand.Next(0, _words.Count);
+
+                while (_words[randomNum].IsHidden())
+                {
+                    randomNum = rand.Next(0, _words.Count);
+                }
+
+                 _words[randomNum].Hide();
+            }
+        }
+        else
+        {
+            for (int i = 0; i < notHiddenCount; i++)
+            {
+                int randomNum = rand.Next(0, _words.Count);
+
+                while (_words[randomNum].IsHidden())
+                {
+                    randomNum = rand.Next(0, _words.Count);
+                }
+
+                 _words[randomNum].Hide();
+            }
         }
     }
 
