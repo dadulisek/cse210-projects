@@ -1,3 +1,5 @@
+// I added lines of code that hide random number of words, and it make sure the word is not already hiden. If it is it chooses another one. If there is less words to hide then it was picked by the random number, it hides the rest.
+
 using System;
 using System.Collections.Generic;
 
