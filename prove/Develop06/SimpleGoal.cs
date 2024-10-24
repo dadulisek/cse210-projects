@@ -7,18 +7,24 @@ public class SimpleGoal : Goal
         _isComplete = false;
     }
 
+    public void SetStatus(string status)
+    {
+        _isComplete = bool.Parse(status);
+    }
+
     public override void RecordEvent()
     {
-
+        Console.WriteLine($"Congratulation! You have earned {GetPoints()} points!");
+        _isComplete = true;
     }
 
     public override bool IsComplete()
     {
-        return false;
+        return _isComplete;
     }
 
     public override string GetStringRepresentation()
     {
-        return "";
+        return $"Simple ~ {GetName()} ~ {GetDescription()} ~ {GetPoints()} ~ {IsComplete()}";
     }
 }
