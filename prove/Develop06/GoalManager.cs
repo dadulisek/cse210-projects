@@ -3,11 +3,13 @@ using System.IO;
 public class GoalManager
 {
     private int _score;
+    private int _level;
     private List<Goal> _goals;
 
     public GoalManager()
     {
         _score = 0;
+        _level = 0;
         _goals = new List<Goal>();
     }
 
@@ -55,7 +57,18 @@ public class GoalManager
 
     public void DisplayPlayerInfo()
     {
-        Console.WriteLine($"\nYou have {_score} points.\n");
+        _level = _score / 100;
+        Console.WriteLine($"\nYou have {_score} points.");
+        Console.WriteLine($"You are level: {_level}");
+        if (_score == 0 && _level == 0)
+        {
+            Console.WriteLine($"You have to reach 100 points until level {_level + 1}");
+        }
+        else
+        {
+            Console.WriteLine($"You have to reach {(_level + 1) * 100} points until level {_level + 1}");
+        }
+        Console.WriteLine();
     }
     public void ListGoalNames()
     {
